@@ -2,9 +2,12 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TopBar from "@/components/TopBar";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { getEntries, PROMPTS, type CircleEntry } from "@/lib/circleStore";
 import { X } from "lucide-react";
 import { format } from "date-fns";
+
+const BUBBLE_EMOJIS = ["💬", "🤗", "💪", "🎉", "🌟"];
 
 const HistoryScreen = () => {
   const navigate = useNavigate();
@@ -12,22 +15,26 @@ const HistoryScreen = () => {
   const [selectedEntry, setSelectedEntry] = useState<CircleEntry | null>(null);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative">
+      <BackgroundOrbs />
       <TopBar onBack={() => navigate("/intro")} />
 
-      <div className="flex-1 px-6 pb-8">
+      <div className="flex-1 px-6 pb-8 relative z-10">
         <h2 className="text-xl font-semibold text-foreground text-center mb-6">
-          Past Entries
+          📖 Past Entries
         </h2>
 
         {entries.length === 0 ? (
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-sm text-muted-foreground text-center mt-12"
+            className="text-center mt-12"
           >
-            No entries yet. Your saved circles will appear here.
-          </motion.p>
+            <span className="text-4xl block mb-4">📭</span>
+            <p className="text-sm text-muted-foreground">
+              No entries yet. Your saved circles will appear here.
+            </p>
+          </motion.div>
         ) : (
           <div className="space-y-3 max-w-sm mx-auto">
             {entries.map((entry, i) => {
@@ -39,10 +46,10 @@ const HistoryScreen = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedEntry(entry)}
-                  className="w-full bg-secondary rounded-2xl p-4 text-left hover:shadow-sm transition-shadow"
+                  className="w-full bg-secondary/70 backdrop-blur-sm rounded-2xl p-4 text-left hover:shadow-md hover:bg-secondary transition-all border border-border/40"
                 >
                   <p className="text-xs text-muted-foreground mb-1">
-                    {format(new Date(entry.date), "MMM d, yyyy · h:mm a")}
+                    📅 {format(new Date(entry.date), "MMM d, yyyy · h:mm a")}
                   </p>
                   <p className="text-sm text-foreground">
                     {namesList.length > 0
@@ -51,7 +58,7 @@ const HistoryScreen = () => {
                   </p>
                   {entry.reflection && (
                     <p className="text-xs text-muted-foreground mt-1 truncate">
-                      {entry.reflection}
+                      💭 {entry.reflection}
                     </p>
                   )}
                 </motion.button>
@@ -81,7 +88,7 @@ const HistoryScreen = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-semibold text-foreground">
-                  {format(new Date(selectedEntry.date), "MMM d, yyyy")}
+                  📅 {format(new Date(selectedEntry.date), "MMM d, yyyy")}
                 </h3>
                 <button
                   onClick={() => setSelectedEntry(null)}
@@ -96,7 +103,7 @@ const HistoryScreen = () => {
                   const name = selectedEntry.names[String(i)];
                   return (
                     <div key={i} className="flex items-start gap-2">
-                      <span className="w-2 h-2 mt-1.5 rounded-full bg-accent flex-shrink-0" />
+                      <span className="text-sm mt-0.5">{BUBBLE_EMOJIS[i]}</span>
                       <div>
                         <p className="text-sm text-foreground">
                           {name || "—"}
@@ -113,7 +120,7 @@ const HistoryScreen = () => {
               {selectedEntry.reflection && (
                 <div className="mt-4 p-3 bg-secondary rounded-xl">
                   <p className="text-xs text-muted-foreground mb-1">
-                    Reflection
+                    💭 Reflection
                   </p>
                   <p className="text-sm text-foreground">
                     {selectedEntry.reflection}
