@@ -192,7 +192,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
               />
               <button
                 onClick={handleSave}
-                className="mt-4 w-full bg-accent text-accent-foreground font-medium py-3 rounded-full hover:opacity-90 transition-opacity"
+                className="mt-4 w-full bg-primary text-primary-foreground font-medium py-3 rounded-full shadow-lg shadow-primary/25 hover:opacity-90 transition-opacity"
               >
                 Save
               </button>

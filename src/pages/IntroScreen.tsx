@@ -19,7 +19,7 @@ const IntroScreen = () => {
         <ProgressDots current={1} />
 
         <h1 className="text-2xl font-semibold text-foreground mt-8 mb-4 leading-tight">
-          Redraw Your Circle
+          <span className="bg-gradient-to-r from-[hsl(258,52%,58%)] to-[hsl(340,45%,65%)] bg-clip-text text-transparent">Redraw Your Circle</span>
         </h1>
 
         <div className="text-muted-foreground text-sm leading-relaxed max-w-xs space-y-3">
