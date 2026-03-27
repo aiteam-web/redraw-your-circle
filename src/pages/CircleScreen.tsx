@@ -106,10 +106,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
               <motion.button
                 key={i}
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{
                   delay: i * 0.1,
                   duration: 0.4,
@@ -118,7 +115,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleBubbleTap(i)}
-                className={`absolute top-1/2 left-1/2 -ml-[38px] -mt-[38px] w-[76px] h-[76px] rounded-full flex flex-col items-center justify-center text-center p-1.5 transition-shadow ${
+                className={`absolute w-[76px] h-[76px] rounded-full flex flex-col items-center justify-center text-center p-1.5 transition-shadow ${
                   BUBBLE_COLORS[i]
                 } ${
                   hasName
@@ -126,7 +123,8 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
                     : "shadow-sm opacity-80"
                 }`}
                 style={{
-                  transform: `translate(${x}px, ${y}px)`,
+                  left: `calc(50% + ${x}px - 38px)`,
+                  top: `calc(50% + ${y}px - 38px)`,
                 }}
                 aria-label={prompt}
               >
