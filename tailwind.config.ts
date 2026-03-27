@@ -12,6 +12,9 @@ export default {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ['"DM Sans"', 'sans-serif'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -56,6 +59,13 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        bubble: {
+          1: "hsl(var(--bubble-1))",
+          2: "hsl(var(--bubble-2))",
+          3: "hsl(var(--bubble-3))",
+          4: "hsl(var(--bubble-4))",
+          5: "hsl(var(--bubble-5))",
         },
       },
       borderRadius: {
