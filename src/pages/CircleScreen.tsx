@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TopBar from "@/components/TopBar";
 import ProgressDots from "@/components/ProgressDots";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { PROMPTS } from "@/lib/circleStore";
 import { Info, X } from "lucide-react";
 
@@ -14,7 +15,8 @@ const BUBBLE_COLORS = [
   "bg-bubble-5",
 ];
 
-// Positions for 5 bubbles around center (angles in degrees, radius %)
+const BUBBLE_EMOJIS = ["💬", "🤗", "💪", "🎉", "🌟"];
+
 const POSITIONS = [
   { angle: -90, r: 110 },
   { angle: -18, r: 110 },
@@ -61,29 +63,30 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
   }, [activeIndex, inputValue, names, onNamesChange]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative">
+      <BackgroundOrbs />
       <TopBar onBack={() => navigate("/intro")} />
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="flex-1 flex flex-col items-center px-6 pb-8"
+        className="flex-1 flex flex-col items-center px-6 pb-8 relative z-10"
       >
         <ProgressDots current={2} />
 
         <h2 className="text-xl font-semibold text-foreground mt-6 mb-2 text-center">
-          Who's In Your Circle Right Now?
+          Who's In Your Circle Right Now? 🔮
         </h2>
         <p className="text-sm text-muted-foreground text-center max-w-xs mb-2">
           Think about the people in your life and where they show up for you.
         </p>
 
         {/* Instruction bar */}
-        <div className="bg-secondary rounded-2xl px-4 py-2.5 flex items-center gap-2 max-w-xs mb-6">
-          <Info className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+        <div className="bg-secondary/80 backdrop-blur-sm rounded-2xl px-4 py-2.5 flex items-center gap-2 max-w-xs mb-6 border border-border/50">
+          <Info className="w-4 h-4 text-primary flex-shrink-0" />
           <span className="text-xs text-muted-foreground">
-            Tap each bubble and add someone who fits that space in your life.
+            👆 Tap each bubble and add someone who fits that space in your life.
           </span>
         </div>
 
@@ -103,12 +106,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
               <motion.button
                 key={i}
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  x: x + Math.sin(Date.now() / 3000 + i * 1.2) * 0,
-                  y: y + Math.cos(Date.now() / 3000 + i * 1.2) * 0,
-                }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{
                   delay: i * 0.1,
                   duration: 0.4,
@@ -117,20 +115,22 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleBubbleTap(i)}
-                className={`absolute top-1/2 left-1/2 -ml-[38px] -mt-[38px] w-[76px] h-[76px] rounded-full flex items-center justify-center text-center p-2 transition-shadow ${
+                className={`absolute w-[76px] h-[76px] rounded-full flex flex-col items-center justify-center text-center p-1.5 transition-shadow ${
                   BUBBLE_COLORS[i]
                 } ${
                   hasName
-                    ? "shadow-md ring-2 ring-accent/30"
+                    ? "shadow-md ring-2 ring-primary/20"
                     : "shadow-sm opacity-80"
                 }`}
                 style={{
-                  transform: `translate(${x}px, ${y}px)`,
+                  left: `calc(50% + ${x}px - 38px)`,
+                  top: `calc(50% + ${y}px - 38px)`,
                 }}
                 aria-label={prompt}
               >
-                <span className="text-[10px] leading-tight text-foreground font-medium">
-                  {hasName ? names[String(i)] : prompt.split(" ").slice(0, 3).join(" ") + "…"}
+                <span className="text-sm mb-0.5">{BUBBLE_EMOJIS[i]}</span>
+                <span className="text-[9px] leading-tight text-foreground font-medium">
+                  {hasName ? names[String(i)] : prompt.split(" ").slice(0, 2).join(" ") + "…"}
                 </span>
               </motion.button>
             );
@@ -138,7 +138,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
         </div>
 
         <p className="text-xs text-muted-foreground mt-6 italic text-center">
-          It's okay if your circle feels small.
+          🤍 It's okay if your circle feels small.
         </p>
 
         <button
@@ -169,7 +169,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-semibold text-foreground">
-                  Add a name
+                  {BUBBLE_EMOJIS[activeIndex]} Add a name
                 </h3>
                 <button
                   onClick={() => setActiveIndex(null)}
@@ -188,7 +188,7 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
                 onKeyDown={(e) => e.key === "Enter" && handleSave()}
                 placeholder="Enter a name…"
                 autoFocus
-                className="w-full bg-secondary rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-accent/50"
+                className="w-full bg-secondary rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/50"
               />
               <button
                 onClick={handleSave}
