@@ -8,50 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 30 14% 95%;
-    --foreground: 0 0% 18%;
+    --background: 30 25% 96%;
+    --foreground: 20 10% 16%;
 
-    --card: 30 14% 95%;
-    --card-foreground: 0 0% 18%;
+    --card: 30 30% 97%;
+    --card-foreground: 20 10% 16%;
 
-    --popover: 30 14% 95%;
-    --popover-foreground: 0 0% 18%;
+    --popover: 30 30% 97%;
+    --popover-foreground: 20 10% 16%;
 
-    --primary: 209 30% 72%;
-    --primary-foreground: 0 0% 18%;
+    --primary: 258 52% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 18% 91%;
-    --secondary-foreground: 0 0% 18%;
+    --secondary: 30 28% 91%;
+    --secondary-foreground: 20 10% 16%;
 
-    --muted: 30 18% 91%;
-    --muted-foreground: 0 0% 48%;
+    --muted: 30 20% 88%;
+    --muted-foreground: 20 8% 46%;
 
-    --accent: 209 30% 72%;
-    --accent-foreground: 0 0% 18%;
+    --accent: 258 52% 58%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 56%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 10% 88%;
-    --input: 30 10% 88%;
-    --ring: 209 30% 72%;
+    --border: 30 18% 86%;
+    --input: 30 18% 86%;
+    --ring: 258 52% 58%;
 
     --radius: 1rem;
 
-    --sidebar-background: 30 14% 95%;
-    --sidebar-foreground: 0 0% 18%;
-    --sidebar-primary: 209 30% 72%;
-    --sidebar-primary-foreground: 0 0% 18%;
-    --sidebar-accent: 30 18% 91%;
-    --sidebar-accent-foreground: 0 0% 18%;
-    --sidebar-border: 30 10% 88%;
-    --sidebar-ring: 209 30% 72%;
+    --sidebar-background: 30 25% 96%;
+    --sidebar-foreground: 20 10% 16%;
+    --sidebar-primary: 258 52% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 28% 91%;
+    --sidebar-accent-foreground: 20 10% 16%;
+    --sidebar-border: 30 18% 86%;
+    --sidebar-ring: 258 52% 58%;
 
-    --bubble-1: 209 30% 78%;
-    --bubble-2: 240 20% 82%;
-    --bubble-3: 200 25% 80%;
-    --bubble-4: 220 22% 84%;
-    --bubble-5: 230 18% 76%;
+    --bubble-1: 258 45% 72%;
+    --bubble-2: 198 50% 68%;
+    --bubble-3: 340 45% 72%;
+    --bubble-4: 160 40% 65%;
+    --bubble-5: 32 55% 70%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(258 52% 58%), hsl(340 45% 65%));
+    --gradient-soft: linear-gradient(135deg, hsl(258 45% 72% / 0.3), hsl(198 50% 68% / 0.3));
   }
 }
 

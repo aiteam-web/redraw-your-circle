@@ -41,7 +41,7 @@ const IntroScreen = () => {
 
         <button
           onClick={() => navigate("/circle")}
-          className="mt-10 bg-accent text-accent-foreground font-medium px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+          className="mt-10 bg-primary text-primary-foreground font-medium px-8 py-3 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-200"
         >
           Start →
         </button>
