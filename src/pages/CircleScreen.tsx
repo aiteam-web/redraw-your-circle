@@ -90,8 +90,8 @@ const CircleScreen = ({ names, onNamesChange }: CircleScreenProps) => {
         {/* Circle container */}
         <div className="relative w-72 h-72 mx-auto">
           {/* Center node */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-accent flex items-center justify-center z-10">
-            <span className="text-sm font-semibold text-accent-foreground">You</span>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10">
+            <span className="text-sm font-semibold text-primary-foreground">You</span>
           </div>
 
           {/* Floating bubbles */}
