@@ -34,7 +34,7 @@ const ReflectionScreen = ({ names, onReset }: ReflectionScreenProps) => {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex-1 flex flex-col items-center px-6 pb-8 text-center relative z-10"
       >
         <ProgressDots current={3} />
