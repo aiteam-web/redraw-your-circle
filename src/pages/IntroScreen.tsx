@@ -15,7 +15,7 @@ const IntroScreen = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex-1 flex flex-col items-center justify-center px-6 pb-8 text-center relative z-10"
       >
         <ProgressDots current={1} />
