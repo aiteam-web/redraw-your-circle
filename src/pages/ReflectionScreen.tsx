@@ -75,7 +75,7 @@ const ReflectionScreen = ({ names, onReset }: ReflectionScreenProps) => {
         <div className="flex flex-col gap-3 mt-8 w-full max-w-xs">
           <button
             onClick={handleSave}
-            className="bg-accent text-accent-foreground font-medium py-3 rounded-full hover:opacity-90 transition-opacity"
+            className="bg-primary text-primary-foreground font-medium py-3 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-200"
           >
             Save
           </button>

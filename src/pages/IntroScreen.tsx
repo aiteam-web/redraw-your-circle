@@ -19,7 +19,7 @@ const IntroScreen = () => {
         <ProgressDots current={1} />
 
         <h1 className="text-2xl font-semibold text-foreground mt-8 mb-4 leading-tight">
-          Redraw Your Circle
+          <span className="bg-gradient-to-r from-[hsl(258,52%,58%)] to-[hsl(340,45%,65%)] bg-clip-text text-transparent">Redraw Your Circle</span>
         </h1>
 
         <div className="text-muted-foreground text-sm leading-relaxed max-w-xs space-y-3">
@@ -41,7 +41,7 @@ const IntroScreen = () => {
 
         <button
           onClick={() => navigate("/circle")}
-          className="mt-10 bg-accent text-accent-foreground font-medium px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+          className="mt-10 bg-primary text-primary-foreground font-medium px-8 py-3 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-200"
         >
           Start →
         </button>
